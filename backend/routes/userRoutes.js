@@ -3,7 +3,7 @@ const router = express.Router();
 const mongoose = require("mongoose");
 const { generateToken, jwtAuthMiddleware } = require("../middleware/jwt");
 require("dotenv").config();
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 
 // Importing User model
 const jsonwebtoken = require("../middleware/auth")("USER");
