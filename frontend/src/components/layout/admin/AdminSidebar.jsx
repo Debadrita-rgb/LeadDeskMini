@@ -39,7 +39,7 @@ export default function AdminSidebar({ isOpen, toggleSidebar }) {
             View User
           </Link>
           <Link
-            to="/admin/view-all-user"
+            to="/admin/view-all-contact"
             className="flex items-center space-x-2 p-4 rounded transition duration-200 text-white hover:text-[#1b4c6d] hover:bg-gray-100 hover:rounded-2xl"
           >
             <RiContactsFill size={10} className="inline-block mr-2" />

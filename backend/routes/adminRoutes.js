@@ -8,6 +8,7 @@ const dayjs = require("dayjs");
 
 const User = require("../models/User");
 const Lead = require("../models/Lead");
+const Contact = require("../models/Contact");
 
 router.post("/signup", async (req, res) => {
   try {
@@ -263,6 +264,7 @@ const generateCRUDRoutes = (path, Model) => {
   );
 };;
 generateCRUDRoutes("user", User);
+generateCRUDRoutes("contact", Contact);
 generateCRUDRoutes("lead", Lead);
 
   router.get(

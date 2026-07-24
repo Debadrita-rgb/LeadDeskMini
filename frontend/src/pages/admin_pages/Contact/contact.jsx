@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import TableComponent from "../../../../components/commonComponent/CrudComponent/TableComponent";
+import TableComponent from "../../../components/commonComponent/CrudComponent/TableComponent";
 import { toast } from "react-toastify";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import BASE_URL from "../../../../../config";
+import BASE_URL from "../../../../config";
 
 const contact = () => {
   const [contactItems, setContactItems] = useState([]);
@@ -11,7 +11,7 @@ const contact = () => {
   useEffect(() => {
     const token = localStorage.getItem("token");
 
-    fetch(`${BASE_URL}/admin/get-fullcontact-details`, {
+    fetch(`${BASE_URL}/admin/get-contact`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },

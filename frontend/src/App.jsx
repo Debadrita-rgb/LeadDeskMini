@@ -37,10 +37,9 @@ import AdminSingleUser from "./pages/admin_pages/User/viewUserDetails.jsx"
 import AdminLead from "./pages/admin_pages/Lead/viewLead.jsx"
 import AdminSingleLeads from "./pages/admin_pages/Lead/viewSingleLeads.jsx";
 
-//Category
-import AdminCategory from "./pages/admin_pages/Category/viewCategory.jsx";
-import AdminAddCategory from "./pages/admin_pages/Category/addCategory.jsx";
-import AdmineditCategory from "./pages/admin_pages/Category/editCategory.jsx";
+//Contact
+import AdminContact from "./pages/admin_pages/Contact/contact.jsx";
+import AdminViewContact from "./pages/admin_pages/Contact/ViewContactDetails.jsx";
 
 
 // Login Page of Admin,Manager,Head Cook,Supervisor
@@ -84,6 +83,9 @@ const App = () => {
                 path="view-single-user/:id"
                 element={<AdminSingleUser />}
               />
+              <Route path="view-contact-details/:id" element={<AdminViewContact />} />
+
+              <Route path="view-all-contact" element={<AdminContact />} />
             </Route>
           )}
 

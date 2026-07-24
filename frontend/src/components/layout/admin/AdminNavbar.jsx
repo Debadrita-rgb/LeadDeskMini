@@ -37,11 +37,15 @@ const AdminNavbar = ({ toggleSidebar, isSidebarOpen }) => {
     if (location.pathname.startsWith("/admin/view-single-user/")) {
       return "View Single User ";
     }
+
+    if (location.pathname.startsWith("/admin/view-contact-details/")) {
+      return "View Contact Details ";
+    }
     
     switch (location.pathname) {
       case "/admin/view-all-user":
         return "View All Users";
-      case "/admin/view-contact":
+      case "/admin/view-all-contact":
         return "View Contact";
       case "/admin/view-all-lead":
         return "View All Leads";

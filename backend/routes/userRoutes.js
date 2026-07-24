@@ -8,6 +8,7 @@ const bcrypt = require("bcrypt");
 // Importing User model
 const jsonwebtoken = require("../middleware/auth")("USER");
 const User = require("../models/User");
+const Contact = require("../models/Contact");
 const Lead = require("../models/Lead");
 
 router.post("/signup", async (req, res) => {
