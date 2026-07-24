@@ -1,0 +1,83 @@
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import TableComponent from "../../../components/commonComponent/CrudComponent/TableComponent";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import BASE_URL from "../../../../config";
+
+const ViewUser = () => {
+  const [searchTerm, setSearchTerm] = useState("");
+  const [staff, setStaff] = useState([]);
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    fetch(`${BASE_URL}/admin/get-user`, {
+      headers: { Authorization: `Bearer ${token}` },
+    })
+      .then((res) => res.json())
+      .then((data) => setStaff(data))
+      .catch((err) => console.error("Fetch error:", err));
+  }, []);
+
+  const filteredUsers = (staff || [])
+    .filter((user) => user.role === "USER")
+    .filter((user) => {
+      const search = searchTerm.toLowerCase();
+
+      return (
+        user.name?.toLowerCase().includes(search) ||
+        user.email?.toLowerCase().includes(search)
+      );
+    })
+    .map((user, index) => ({
+      Id: index + 1,
+      Name: user.name,
+      Email: user.email,
+      id: user._id,
+      isActive: user.isActive,
+      viewPath: `/admin/view-single-user/${user._id}`,
+    }));
+
+  const handleToggleActive = async (id, isActive) => {
+    const token = localStorage.getItem("token");
+    try {
+      const res = await fetch(`${BASE_URL}/admin/toggle-user-status/${id}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({ isActive }),
+      });
+      const updated = await res.json();
+      setStaff((prev) =>
+        prev.map((u) => (u._id === updated.updated._id ? updated.updated : u)),
+      );
+      toast.success(
+        `Admin ${isActive ? "activated" : "deactivated"} successfully`,
+      );
+    } catch (err) {
+      toast.error("Status toggle failed");
+    }
+  };
+
+  return (
+    <div className="p-6">
+      <ToastContainer position="top-right" autoClose={2000} />
+
+      <TableComponent
+        title="User"
+        columns={["Id", "Name", "Email"]}
+        data={filteredUsers}
+        searchTerm={searchTerm}
+        setSearchTerm={setSearchTerm}
+        handleToggleActive={handleToggleActive}
+        handleDelete={false}
+        showAddButton={false}
+        showRecommendedeColumn={false}
+      />
+    </div>
+  );
+};
+
+export default ViewUser;
