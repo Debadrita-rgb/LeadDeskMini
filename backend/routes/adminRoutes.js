@@ -80,7 +80,7 @@ router.post("/login", async (req, res) => {
 router.get("/dashboardData", jwtAuthMiddleware, async (req, res) => {
   try {
     const nUser = await User.countDocuments({
-      role: { $ne: "admin" }, // Exclude admin users
+      role: { $ne: "ADMIN" },
     });
 
     const nNewLeads = await Lead.countDocuments({
