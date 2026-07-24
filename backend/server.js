@@ -12,7 +12,7 @@ app.use(
   cors({
     origin: [
       "http://localhost:5173",
-      "https://show-hub-frontend.onrender.com",
+      "https://leaddeskmini-frontend.onrender.com",
     ],
     credentials: true,
   }),
