@@ -238,7 +238,7 @@ router.post(`/add-lead-by-user`, jwtAuthMiddleware, async (req, res) => {
     await item.save();
 
     res.status(201).json({
-      message: `${path} added`,
+      message: "Lead added successfully",
       item,
     });
   } catch (error) {
