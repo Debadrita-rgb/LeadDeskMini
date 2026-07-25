@@ -24,7 +24,7 @@ const leadSchema = new mongoose.Schema(
       type: String,
       required: true,
       unique: true,
-      match: [/^[6-9]\d{9}$/, "Mobile number must be exactly 10 digits"],
+      // match: [/^[6-9]\d{9}$/, "Mobile number must be exactly 10 digits"],
     },
     budget: {
       type: String,

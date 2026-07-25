@@ -204,12 +204,12 @@ try {
 router.post(`/add-lead-by-user`, jwtAuthMiddleware, async (req, res) => {
   try {
     const { email, mobile } = req.body;
-    // // Validate mobile number
-    // if (!/^[6-9]\d{9}$/.test(mobile)) {
-    //   return res.status(400).json({
-    //     message: "Mobile number must be exactly 10 digits.",
-    //   });
-    // }
+    // Validate mobile number
+    if (!/^[6-9]\d{9}$/.test(mobile)) {
+      return res.status(400).json({
+        message: "Mobile number must be exactly 10 digits.",
+      });
+    }
 
     // Validate email
     if (!/^\S+@\S+\.\S+$/.test(email)) {
