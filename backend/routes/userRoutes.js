@@ -242,10 +242,11 @@ router.post(`/add-lead-by-user`, jwtAuthMiddleware, async (req, res) => {
       item,
     });
   } catch (error) {
-    console.error(error);
+    console.error("Error:", error);
 
     res.status(500).json({
       message: "Internal server error",
+      error: error.message,
     });
   }
 });

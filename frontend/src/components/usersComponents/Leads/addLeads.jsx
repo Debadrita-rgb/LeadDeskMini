@@ -48,7 +48,7 @@ const AddLeads = () => {
       navigate("/user-leads");
     } catch (err) {
       console.error(err);
-      toast.error(err.message);
+      toast.error(err.message); 
     }
   };
 
